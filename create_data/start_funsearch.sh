@@ -8,7 +8,7 @@ export CUDA_VISIBLE_DEVICES=0
 mkdir -p results/logs
 
 nohup python -m algodisco.methods.funsearch.main_funsearch \
-    --config configs/admi_funsearch.yaml \
+    --config configs/admi_funsearch_run1.yaml \
     > results/logs/funsearch_run1.out 2>&1 &
 echo "run1 PID $!"
 

@@ -1,4 +1,4 @@
-# create_data
+# Create DPO dataset
 
 Pipeline for generating DPO preference data via LLM-driven algorithm search.
 
@@ -81,7 +81,7 @@ Configs for each run:
 
 | Run  | Config                             |
 |------|------------------------------------|
-| run1 | `configs/admi_funsearch.yaml`      |
+| run1 | `configs/admi_funsearch_run1.yaml` |
 | run2 | `configs/admi_funsearch_run2.yaml` |
 | run3 | `configs/admi_funsearch_run3.yaml` |
 

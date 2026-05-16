@@ -134,10 +134,8 @@ def dpo_test():
     model_path = "/opt/pangu/openPangu-Embedded-7B-V1.1"
     # model_path = "/data/Qwen2.5-7B-Instruct"
     device_ids = [0, 1, 2, 3]
-    save_model_path = "/root/rui/pangu-dpo/output/DEBUG_IGNORE"
-    train_file = (
-        "/root/rui/pangu-dpo/dpo-admi-train-nipsdata-real2000data-p30_no_think.pkl"
-    )
+    save_model_path = "/path/to/output"
+    train_file = "/path/to/dataset.pkl"
     deepspeed_config_path = str(
         Path(__file__).parent / "deepspeed_config" / "deepspeed_stage3_no_offload.json"
     )
