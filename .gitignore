@@ -1,0 +1,23 @@
+_ignore/
+CLAUDE.md
+.claude/
+.idea/
+create_data/algodisco/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Results and checkpoints
+results/
+*.out
+*.pid
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
