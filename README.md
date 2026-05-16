@@ -1,6 +1,6 @@
 # DPO-AAD: Fine-Tuning LLMs for Automated Algorithm Design
 
-This repository contains the training code for fine-tuning large language models via **Direct Preference Optimization (DPO)** on algorithm design tasks, as described in our paper [Fine-Tuning Large Language Model for Automated Algorithm Design](https://openreview.net/...) (ICLR 2026).
+This repository contains the training code for fine-tuning large language models via **Direct Preference Optimization (DPO)** on algorithm design tasks, as described in our paper [Fine-Tuning Large Language Model for Automated Algorithm Design](https://openreview.net/...)
 
 ## Overview
 
