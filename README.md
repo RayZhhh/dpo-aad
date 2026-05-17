@@ -6,9 +6,41 @@ This repository contains the training code for fine-tuning large language models
 
 ```
 dpo-aad/
-├── create_data/       # Preference dataset creation via FunSearch/EoH
-├── train_cuda/        # DPO training on NVIDIA GPUs (CUDA + DeepSpeed)
-└── train_ascend/      # DPO training on Huawei Ascend NPUs
+├── algodisco/                   # AlgoDisco repo (cloned here, see below)
+├── create_data/                 # Preference dataset creation via FunSearch/EoH
+├── search_with_trained_model/   # Run FunSearch with a DPO-trained model
+├── train_cuda/                  # DPO training on NVIDIA GPUs (CUDA + DeepSpeed)
+└── train_ascend/                # DPO training on Huawei Ascend NPUs
+```
+
+---
+
+## Environment Setup
+
+### Install AlgoDisco
+
+Clone AlgoDisco into the repository root. A local clone is required because the search
+scripts reference task examples (`task_examples/`) inside the AlgoDisco repository.
+
+```bash
+# Run from the dpo-aad/ root
+git clone https://github.com/RayZhhh/algodisco.git
+cd algodisco
+pip install -e ".[swanlab]"
+cd ..
+```
+
+> The `swanlab` extra installs the experiment logger used in the configs.
+> All scripts in this repo must be run from the `dpo-aad/` root so that
+> relative paths such as `algodisco/task_examples/` resolve correctly.
+
+### Install vLLM
+
+vLLM is used as the local LLM backend. Installing it also pulls in the `openai` package
+automatically, so no separate `pip install openai` is needed.
+
+```bash
+pip install vllm
 ```
 
 ---

@@ -1,0 +1,53 @@
+# FunSearch config using the DPO-trained Llama model.
+#
+# Before running:
+#   1. Start the vLLM server:  bash serve_llama.sh 8000 /path/to/llama_dpo_adapter
+#   2. Set SWANLAB_API_KEY if using SwanLab logging.
+#   3. Adjust template_program_path / task_description_path to your task.
+#
+# Run with:
+#   python -m algodisco.methods.funsearch.main_funsearch \
+#       --config search_with_trained_model/configs/funsearch_llama_trained.yaml
+
+method:
+  template_program_path: "task_examples/admissible_set/template_algo.txt"
+  task_description_path: "task_examples/admissible_set/task_description.txt"
+  language: "python"
+  num_samplers: 32
+  num_evaluators: 2
+  idea_prompt: false
+  examples_per_prompt: 2
+  samples_per_prompt: 4
+  max_samples: 10000
+  llm_max_tokens: null
+  llm_timeout_seconds: 120
+  db_num_islands: 10
+  db_max_island_capacity: null
+  db_reset_period: 14400
+  db_cluster_sampling_temperature_init: 0.1
+  db_cluster_sampling_temperature_period: 30000
+  db_save_frequency: 100
+  keep_metadata_keys: ["sample_time", "eval_time", "execution_time", "error_msg", "prompt", "response_text"]
+  debug_mode: false
+  debug_mode_crash: false
+
+llm:
+  class_path: "algodisco.providers.llm.openai_api.OpenAIAPI"
+  kwargs:
+    base_url: "http://localhost:8000/v1"
+    model: "llama-dpo"          # matches the adapter name in serve_llama.sh
+    api_key: "EMPTY"            # vLLM does not verify keys; any non-empty string works
+
+evaluator:
+  class_path: "task_examples/admissible_set/evaluator.py:AdmissibleSetEvaluator"
+  kwargs: {}
+
+logger:
+  class_path: "algodisco.providers.logger.swanlab_logger.BaseSwanLabLogger"
+  kwargs:
+    logdir: "results/admissible_set/funsearch/llama_trained_run1"
+    project: "admissible_set"
+    experiment_name: "funsearch_llama_dpo_run1"
+    group: "funsearch_trained"
+    swanlab_logdir: "results/admissible_set/funsearch/llama_trained_run1/swanlab"
+    api_key: "${SWANLAB_API_KEY}"
