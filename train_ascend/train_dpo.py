@@ -79,7 +79,7 @@ def longest_prompt_len(dataset, tok):
 def load_dpo_dataset(args):
     if str(args.train_file).endswith(".pkl"):
         with open(args.train_file, "rb") as f:
-            data = pickle.load(f)[:80]
+            data = pickle.load(f)
         return Dataset.from_list(data)
     elif str(args.train_file).endswith(".json"):
         return load_dataset("json", data_files=args.train_file, split="train")

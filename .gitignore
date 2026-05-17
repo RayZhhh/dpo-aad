@@ -3,6 +3,7 @@ CLAUDE.md
 .claude/
 .idea/
 create_data/algodisco/
+algodisco
 
 # Python
 __pycache__/
@@ -21,3 +22,9 @@ results/
 
 # OS
 .DS_Store
+
+# Delivery docs and local-only files
+交付文档*
+~$*
+*.pdf
+
